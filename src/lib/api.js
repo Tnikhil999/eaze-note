@@ -16,9 +16,7 @@ api.interceptors.response.use(
 export const uploadDocument = (file) => {
   const fd = new FormData()
   fd.append('file', file)
-  return api.post('/upload', fd, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  })
+  return api.post('/upload', fd)
 }
 
 export const askQuestion = (query, sessionId) =>
