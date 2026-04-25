@@ -10,7 +10,7 @@ export default function UploadBox({ onUpload, uploading, error }) {
     if (!file) return 'No file selected.'
     const ext = file.name.split('.').pop().toLowerCase()
     if (!['pdf', 'txt'].includes(ext)) return 'Only .pdf and .txt files are supported.'
-    if (file.size > 20 * 1024 * 1024) return 'File size must be under 20 MB.'
+    if (file.size > 10 * 1024 * 1024) return 'File size must be under 10 MB.'
     return null
   }
 
@@ -104,7 +104,7 @@ export default function UploadBox({ onUpload, uploading, error }) {
               <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <div className="relative mb-5 inline-flex">
                   <div className={`h-16 w-16 rounded-2xl flex items-center justify-center transition-all duration-300
-                    ${dragging ? 'bg-brand-500/25 border-brand-500/30' : 'bg-slate-800/80 border-white/[0.08]'} border`}>
+                    <span className="text-slate-600 text-xs">· Max 10 MB</span>
                     <Upload size={26} className={dragging ? 'text-brand-400' : 'text-slate-400'} />
                   </div>
                   <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-lg bg-slate-700 border border-white/[0.06] flex items-center justify-center">
